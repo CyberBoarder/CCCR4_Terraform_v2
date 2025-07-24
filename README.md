@@ -207,6 +207,84 @@ terraform apply -auto-approve
 ### 보안 정책 수정
 `modules/iam/policies/` 디렉터리의 JSON 파일을 수정하여 IAM 정책을 업데이트할 수 있습니다.
 
+## 🔄 SSH 세션 독립적 실행 및 모니터링
+
+### 백그라운드 실행 명령어
+
+#### Terraform Plan
+```bash
+# 백그라운드 실행
+nohup terraform plan > terraform_plan.log 2>&1 &
+
+# 특정 타겟만 plan
+nohup terraform plan -target=module.eks > terraform_plan_eks.log 2>&1 &
+```
+
+#### Terraform Apply
+```bash
+# 백그라운드 실행
+nohup terraform apply -auto-approve > terraform_apply.log 2>&1 &
+
+# 단계별 apply
+nohup terraform apply -target=module.vpc -target=module.eks -target=module.iam -auto-approve > terraform_apply_infra.log 2>&1 &
+nohup terraform apply -auto-approve > terraform_apply_addons.log 2>&1 &
+```
+
+#### Terraform Destroy
+```bash
+# 백그라운드 실행
+nohup terraform destroy -auto-approve > terraform_destroy.log 2>&1 &
+
+# 특정 모듈만 destroy
+nohup terraform destroy -target=module.addons -auto-approve > terraform_destroy_addons.log 2>&1 &
+```
+
+### 진행 상황 모니터링
+
+#### 프로세스 상태 확인
+```bash
+# Terraform 프로세스 확인
+ps aux | grep terraform
+
+# 백그라운드 작업 확인
+jobs
+```
+
+#### 실시간 로그 모니터링
+```bash
+# 실시간 로그 확인
+tail -f terraform_apply.log
+tail -f terraform_destroy.log
+
+# 진행률 확인
+grep -c "Creation complete" terraform_apply.log
+grep -c "Destruction complete" terraform_destroy.log
+
+# 에러 확인
+grep -i error terraform_apply.log
+```
+
+#### 완료 상태 확인
+```bash
+# 완료 확인
+grep "Apply complete!" terraform_apply.log
+grep "Destroy complete!" terraform_destroy.log
+
+# 실시간 대시보드 (2초마다 업데이트)
+watch -n 2 'ps aux | grep terraform; echo "---"; tail -5 terraform_apply.log 2>/dev/null'
+```
+
+## 📊 빠른 참조 치트시트
+
+| 작업 | 백그라운드 실행 | 모니터링 |
+|------|----------------|----------|
+| **Plan** | `nohup terraform plan > plan.log 2>&1 &` | `tail -f plan.log` |
+| **Apply** | `nohup terraform apply -auto-approve > apply.log 2>&1 &` | `tail -f apply.log` |
+| **Destroy** | `nohup terraform destroy -auto-approve > destroy.log 2>&1 &` | `tail -f destroy.log` |
+| **프로세스 확인** | - | `ps aux \| grep terraform` |
+| **완료 확인** | - | `grep "complete!" *.log` |
+| **에러 확인** | - | `grep -i error *.log` |
+
 ## 📋 문제 해결
 
 ### 일반적인 문제
@@ -221,14 +299,17 @@ terraform apply -auto-approve
 
 ### 배포 순서 (중요)
 ```bash
-# 1. 기본 인프라 배포
-terraform apply -target=module.vpc -target=module.eks -target=module.iam
+# 1. 기본 인프라 배포 (백그라운드)
+nohup terraform apply -target=module.vpc -target=module.eks -target=module.iam -auto-approve > terraform_apply_infra.log 2>&1 &
 
-# 2. kubeconfig 설정
+# 2. 진행 상황 모니터링
+tail -f terraform_apply_infra.log
+
+# 3. kubeconfig 설정 (인프라 완료 후)
 aws eks update-kubeconfig --region ap-northeast-2 --name test-eks-cluster
 
-# 3. 애드온 배포
-terraform apply
+# 4. 애드온 배포 (백그라운드)
+nohup terraform apply -auto-approve > terraform_apply_addons.log 2>&1 &
 ```
 
 ### 로그 확인
