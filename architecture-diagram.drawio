@@ -71,20 +71,20 @@
         </mxCell>
         
         <!-- Worker Nodes A -->
-        <mxCell id="worker-a1" value="Worker Node" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#FF9900;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.instance;" vertex="1" parent="1">
+        <mxCell id="worker-a1" value="Worker Node" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#FF9900;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.ec2;" vertex="1" parent="1">
           <mxGeometry x="300" y="620" width="60" height="60" as="geometry" />
         </mxCell>
         
-        <mxCell id="worker-a2" value="Worker Node" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#FF9900;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.instance;" vertex="1" parent="1">
+        <mxCell id="worker-a2" value="Worker Node" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#FF9900;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.ec2;" vertex="1" parent="1">
           <mxGeometry x="400" y="620" width="60" height="60" as="geometry" />
         </mxCell>
         
         <!-- Worker Nodes C -->
-        <mxCell id="worker-c1" value="Worker Node" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#FF9900;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.instance;" vertex="1" parent="1">
+        <mxCell id="worker-c1" value="Worker Node" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#FF9900;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.ec2;" vertex="1" parent="1">
           <mxGeometry x="950" y="620" width="60" height="60" as="geometry" />
         </mxCell>
         
-        <mxCell id="worker-c2" value="Worker Node" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#FF9900;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.instance;" vertex="1" parent="1">
+        <mxCell id="worker-c2" value="Worker Node" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#FF9900;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.ec2;" vertex="1" parent="1">
           <mxGeometry x="1050" y="620" width="60" height="60" as="geometry" />
         </mxCell>
         
@@ -113,43 +113,43 @@
         </mxCell>
         
         <!-- IAM -->
-        <mxCell id="iam" value="IAM Roles&#xa;&amp; OIDC" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#DD344C;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.iam;" vertex="1" parent="1">
+        <mxCell id="iam" value="IAM Roles&#xa;&amp; OIDC" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#DD344C;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.iam_role;" vertex="1" parent="1">
           <mxGeometry x="300" y="180" width="78" height="78" as="geometry" />
         </mxCell>
         
         <!-- Kubernetes Components Box -->
         <mxCell id="k8s-components" value="Kubernetes Components" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;verticalAlign=top;fontSize=14;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="600" y="1050" width="400" height="180" as="geometry" />
+          <mxGeometry x="1050" y="180" width="400" height="180" as="geometry" />
         </mxCell>
         
         <!-- AWS LB Controller -->
         <mxCell id="lb-controller" value="AWS LB&#xa;Controller" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="630" y="1090" width="80" height="50" as="geometry" />
+          <mxGeometry x="1080" y="220" width="80" height="50" as="geometry" />
         </mxCell>
         
         <!-- ExternalDNS -->
         <mxCell id="external-dns" value="External&#xa;DNS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="730" y="1090" width="80" height="50" as="geometry" />
+          <mxGeometry x="1180" y="220" width="80" height="50" as="geometry" />
         </mxCell>
         
         <!-- EBS CSI -->
         <mxCell id="ebs-csi" value="EBS CSI&#xa;Driver" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="830" y="1090" width="80" height="50" as="geometry" />
+          <mxGeometry x="1280" y="220" width="80" height="50" as="geometry" />
         </mxCell>
         
         <!-- EFS CSI -->
         <mxCell id="efs-csi" value="EFS CSI&#xa;Driver" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="630" y="1160" width="80" height="50" as="geometry" />
+          <mxGeometry x="1080" y="290" width="80" height="50" as="geometry" />
         </mxCell>
         
         <!-- CoreDNS -->
         <mxCell id="coredns" value="CoreDNS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="730" y="1160" width="80" height="50" as="geometry" />
+          <mxGeometry x="1180" y="290" width="80" height="50" as="geometry" />
         </mxCell>
         
         <!-- kube-proxy -->
         <mxCell id="kube-proxy" value="kube-proxy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="830" y="1160" width="80" height="50" as="geometry" />
+          <mxGeometry x="1280" y="290" width="80" height="50" as="geometry" />
         </mxCell>
         
         <!-- Connections -->
@@ -188,7 +188,7 @@
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="conn6" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="lb-controller" target="iam">
+        <mxCell id="conn6" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="lb-controller" target="iam">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="400" y="400" as="sourcePoint" />
             <mxPoint x="450" y="350" as="targetPoint" />
