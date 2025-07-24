@@ -1,3 +1,4 @@
+# EKS Cluster Outputs
 output "cluster_endpoint" {
   description = "EKS cluster endpoint"
   value       = module.eks.cluster_endpoint
@@ -5,7 +6,7 @@ output "cluster_endpoint" {
 
 output "cluster_ca_certificate" {
   description = "EKS cluster CA certificate"
-  value       = module.eks.cluster_certificate_authority_data
+  value       = module.eks.cluster_ca_certificate
   sensitive   = true
 }
 
@@ -19,6 +20,7 @@ output "cluster_oidc_issuer_url" {
   value       = module.eks.cluster_oidc_issuer_url
 }
 
+# VPC Outputs
 output "vpc_id" {
   description = "VPC ID"
   value       = module.vpc.vpc_id
@@ -34,17 +36,18 @@ output "public_subnets" {
   value       = module.vpc.public_subnets
 }
 
-output "lb_controller_sa_arn" {
-  description = "AWS Load Balancer Controller Service Account ARN"
-  value       = aws_iam_role.lb_controller.arn
+# IAM Role Outputs
+output "lb_controller_role_arn" {
+  description = "AWS Load Balancer Controller IAM Role ARN"
+  value       = module.iam.lb_controller_role_arn
 }
 
-output "external_dns_sa_arn" {
-  description = "ExternalDNS Service Account ARN"
-  value       = aws_iam_role.external_dns.arn
+output "external_dns_role_arn" {
+  description = "ExternalDNS IAM Role ARN"
+  value       = module.iam.external_dns_role_arn
 }
 
-output "ebs_csi_driver_sa_arn" {
-  description = "EBS CSI Driver Service Account ARN"
-  value       = aws_iam_role.ebs_csi_driver.arn
+output "ebs_csi_driver_role_arn" {
+  description = "EBS CSI Driver IAM Role ARN"
+  value       = module.iam.ebs_csi_driver_role_arn
 }
