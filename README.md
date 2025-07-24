@@ -1,6 +1,7 @@
 # AWS EKS Terraform Infrastructure
 
 AWS Well-Architected Framework를 따르는 EKS 클러스터 인프라를 Terraform으로 구성합니다.
+<img width="1511" height="2481" alt="Untitled Diagram drawio" src="https://github.com/user-attachments/assets/df163166-9a20-437a-8d15-6b9ac07b9369" />
 
 ## 포함된 구성 요소
 
