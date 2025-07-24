@@ -23,10 +23,7 @@ variable "node_groups" {
   type        = any
 }
 
-variable "ebs_csi_role_arn" {
-  description = "EBS CSI Driver IAM role ARN"
-  type        = string
-}
+
 
 variable "tags" {
   description = "Common tags"

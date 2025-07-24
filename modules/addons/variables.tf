@@ -28,6 +28,11 @@ variable "domain_filters" {
   type        = list(string)
 }
 
+variable "ebs_csi_role_arn" {
+  description = "EBS CSI Driver IAM role ARN"
+  type        = string
+}
+
 variable "enable_efs" {
   description = "Enable EFS CSI driver"
   type        = bool

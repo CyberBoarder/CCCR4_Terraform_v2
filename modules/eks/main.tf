@@ -13,17 +13,10 @@ module "eks" {
 
   enable_irsa = true
 
+  # Disable aws-auth ConfigMap management to avoid circular dependency
+  manage_aws_auth_configmap = false
+
   eks_managed_node_groups = var.node_groups
 
   tags = var.tags
-}
-
-# EBS CSI Driver Addon
-resource "aws_eks_addon" "ebs_csi" {
-  cluster_name             = module.eks.cluster_name
-  addon_name               = "aws-ebs-csi-driver"
-  addon_version            = "v1.24.0-eksbuild.1"
-  service_account_role_arn = var.ebs_csi_role_arn
-
-  depends_on = [module.eks]
 }

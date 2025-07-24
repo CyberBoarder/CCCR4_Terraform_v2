@@ -67,6 +67,14 @@ resource "helm_release" "external_dns" {
   depends_on = [kubernetes_service_account.external_dns]
 }
 
+# EBS CSI Driver Addon
+resource "aws_eks_addon" "ebs_csi" {
+  cluster_name             = var.cluster_name
+  addon_name               = "aws-ebs-csi-driver"
+  addon_version            = "v1.24.0-eksbuild.1"
+  service_account_role_arn = var.ebs_csi_role_arn
+}
+
 # EFS CSI Driver (optional)
 resource "helm_release" "efs_csi_driver" {
   count = var.enable_efs ? 1 : 0

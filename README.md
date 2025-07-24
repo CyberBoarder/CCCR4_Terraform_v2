@@ -70,7 +70,9 @@ cp terraform.tfvars.example terraform.tfvars
 # terraform.tfvars 파일을 환경에 맞게 수정
 ```
 
-### 3. 배포
+### 3. 단계별 배포 (권장)
+
+#### 3-1. 기본 인프라 배포
 ```bash
 # Terraform 초기화
 terraform init
@@ -78,17 +80,32 @@ terraform init
 # 실행 계획 확인
 terraform plan
 
-# 인프라 배포
+# 기본 인프라 배포 (EKS 클러스터, VPC, IAM)
 terraform apply
 ```
 
-### 4. kubeconfig 설정
+#### 3-2. kubeconfig 설정
 ```bash
 # EKS 클러스터 접근 설정
-aws eks update-kubeconfig --region <region> --name <cluster-name>
+aws eks update-kubeconfig --region ap-northeast-2 --name test-eks-cluster
 
 # 클러스터 상태 확인
 kubectl get nodes
+```
+
+#### 3-3. 애드온 확인
+```bash
+# 배포된 애드온 확인
+kubectl get pods -n kube-system | grep -E "(aws-load-balancer|external-dns|ebs-csi)"
+
+# Load Balancer Controller 상태 확인
+kubectl get deployment -n kube-system aws-load-balancer-controller
+```
+
+### 4. 일괄 배포 (선택사항)
+```bash
+# 모든 구성 요소를 한 번에 배포
+terraform apply -auto-approve
 ```
 
 ## ⚙️ 주요 변수
@@ -162,16 +179,21 @@ kubectl get nodes
 ### EKS 모듈
 - Managed EKS 클러스터 생성
 - EKS Managed Node Groups 구성
-- EBS CSI Driver 애드온 설치
+- OIDC Provider 자동 설정
 
 ### IAM 모듈
-- IRSA를 위한 OIDC Provider 설정
-- 각 서비스별 최소 권한 IAM 역할 생성
+- IRSA를 위한 서비스 계정 역할 생성
+- AWS Load Balancer Controller IAM 역할
+- ExternalDNS IAM 역할
+- EBS CSI Driver IAM 역할
 - 정책 파일 분리로 관리 용이성 향상
 
 ### Addons 모듈
-- Kubernetes Service Account 생성
-- Helm을 통한 애드온 설치
+- EBS CSI Driver 애드온 설치
+- Kubernetes Service Account 생성 (IRSA 연동)
+- Helm을 통한 애드온 설치:
+  - AWS Load Balancer Controller
+  - ExternalDNS
 - 설정 가능한 애드온 옵션 제공
 
 ## 🛠️ 유지보수 가이드
@@ -188,13 +210,33 @@ kubectl get nodes
 ## 📋 문제 해결
 
 ### 일반적인 문제
-1. **OIDC Provider 오류**: EKS 클러스터가 완전히 생성된 후 IAM 역할이 생성되는지 확인
-2. **Helm 설치 실패**: Kubernetes provider가 올바르게 구성되었는지 확인
-3. **노드 그룹 생성 실패**: 서브넷 태깅이 올바른지 확인
+1. **순환 종속성 오류**: Kubernetes/Helm provider와 EKS 클러스터 간 순환 종속성
+   - 해결: 기본 인프라 먼저 배포 후 애드온 배포
+2. **Webhook 연결 실패**: Load Balancer Controller webhook 준비 전 External DNS 배포 시도
+   - 해결: 30초 대기 후 재시도
+3. **EBS CSI 정책 오류**: 잘못된 IAM 정책 ARN
+   - 해결: `AmazonEBSCSIDriverPolicy` 정책 사용
+4. **kubeconfig 설정 오류**: Kubernetes provider 연결 실패
+   - 해결: `aws eks update-kubeconfig` 실행 후 재배포
+
+### 배포 순서 (중요)
+```bash
+# 1. 기본 인프라 배포
+terraform apply -target=module.vpc -target=module.eks -target=module.iam
+
+# 2. kubeconfig 설정
+aws eks update-kubeconfig --region ap-northeast-2 --name test-eks-cluster
+
+# 3. 애드온 배포
+terraform apply
+```
 
 ### 로그 확인
 ```bash
 # Terraform 디버그 로그 활성화
 export TF_LOG=DEBUG
 terraform apply
+
+# Kubernetes 리소스 상태 확인
+kubectl get events -n kube-system --sort-by='.lastTimestamp'
 ```

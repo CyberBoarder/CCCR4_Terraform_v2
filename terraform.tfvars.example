@@ -1,8 +1,14 @@
 # AWS Configuration
 region = "ap-northeast-2"
 
+# 주의: 실제 사용 시 아래 값들을 환경에 맞게 수정하세요
+# - cluster_name: 고유한 클러스터 이름
+# - domain_filters: 실제 소유한 도메인
+# - instance_types: 워크로드에 적합한 인스턴스 타입
+# - tags: 조직의 태깅 정책에 맞는 태그
+
 # EKS Configuration
-cluster_name    = "my-eks-cluster"
+cluster_name    = "test-eks-cluster"
 cluster_version = "1.28"
 
 # VPC Configuration
@@ -15,22 +21,22 @@ public_subnets  = ["10.0.101.0/24", "10.0.102.0/24"]
 node_groups = {
   main = {
     min_size       = 1
-    max_size       = 3
-    desired_size   = 2
-    instance_types = ["t3.medium"]
+    max_size       = 2
+    desired_size   = 1
+    instance_types = ["t3.small"]
     capacity_type  = "ON_DEMAND"
   }
 }
 
-# ExternalDNS Configuration
-domain_filters = ["example.com"]
+# ExternalDNS Configuration (테스트용 로컬 도메인)
+domain_filters = ["test.local"]
 
 # Optional Features
 enable_efs = false
 
 # Tags
 tags = {
-  Environment = "dev"
-  Project     = "eks-cluster"
+  Environment = "test"
+  Project     = "eks-test"
   Terraform   = "true"
 }
