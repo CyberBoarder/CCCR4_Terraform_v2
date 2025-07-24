@@ -71,20 +71,20 @@
         </mxCell>
         
         <!-- Worker Nodes A -->
-        <mxCell id="worker-a1" value="Worker Node" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.ec2_instance;" vertex="1" parent="1">
+        <mxCell id="worker-a1" value="Worker Node" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#FF9900;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.instance;" vertex="1" parent="1">
           <mxGeometry x="300" y="620" width="60" height="60" as="geometry" />
         </mxCell>
         
-        <mxCell id="worker-a2" value="Worker Node" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.ec2_instance;" vertex="1" parent="1">
+        <mxCell id="worker-a2" value="Worker Node" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#FF9900;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.instance;" vertex="1" parent="1">
           <mxGeometry x="400" y="620" width="60" height="60" as="geometry" />
         </mxCell>
         
         <!-- Worker Nodes C -->
-        <mxCell id="worker-c1" value="Worker Node" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.ec2_instance;" vertex="1" parent="1">
+        <mxCell id="worker-c1" value="Worker Node" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#FF9900;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.instance;" vertex="1" parent="1">
           <mxGeometry x="950" y="620" width="60" height="60" as="geometry" />
         </mxCell>
         
-        <mxCell id="worker-c2" value="Worker Node" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.ec2_instance;" vertex="1" parent="1">
+        <mxCell id="worker-c2" value="Worker Node" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#FF9900;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.instance;" vertex="1" parent="1">
           <mxGeometry x="1050" y="620" width="60" height="60" as="geometry" />
         </mxCell>
         
@@ -99,11 +99,11 @@
         </mxCell>
         
         <!-- EBS Volumes -->
-        <mxCell id="ebs1" value="EBS" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#7AA116;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.ebs_volume;" vertex="1" parent="1">
+        <mxCell id="ebs1" value="EBS Volume" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#FF9900;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.elastic_block_store;" vertex="1" parent="1">
           <mxGeometry x="500" y="720" width="60" height="60" as="geometry" />
         </mxCell>
         
-        <mxCell id="ebs2" value="EBS" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#7AA116;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.ebs_volume;" vertex="1" parent="1">
+        <mxCell id="ebs2" value="EBS Volume" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#FF9900;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.elastic_block_store;" vertex="1" parent="1">
           <mxGeometry x="1150" y="720" width="60" height="60" as="geometry" />
         </mxCell>
         
@@ -113,7 +113,7 @@
         </mxCell>
         
         <!-- IAM -->
-        <mxCell id="iam" value="IAM Roles&#xa;&amp; OIDC" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#759C3E;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.identity_and_access_management_iam;" vertex="1" parent="1">
+        <mxCell id="iam" value="IAM Roles&#xa;&amp; OIDC" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#DD344C;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.iam;" vertex="1" parent="1">
           <mxGeometry x="300" y="180" width="78" height="78" as="geometry" />
         </mxCell>
         
@@ -196,7 +196,7 @@
         </mxCell>
         
         <!-- EFS File System -->
-        <mxCell id="efs" value="EFS" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#7AA116;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.efs_file_system;" vertex="1" parent="1">
+        <mxCell id="efs" value="EFS File System" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#7AA116;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.elastic_file_system;" vertex="1" parent="1">
           <mxGeometry x="761" y="500" width="78" height="78" as="geometry" />
         </mxCell>
         
